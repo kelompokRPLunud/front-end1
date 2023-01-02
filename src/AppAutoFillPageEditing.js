@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import {useEffect} from 'react';
 import './App.css';
 
+var allFont = null, allSize = null, allPositionXY = null, allColor = null
+
 function AppAutoFillPageEditing() {
   const [font, setFont] = useState("");
   const [size, setSize] = useState("");
   const [positionX, setPositionX] = useState("");
   const [positionY, setPositionY] = useState("");
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState("#000000");
 
   const [imgSertifName, setImgSertifName] = useState("");
   const [imgSertifFile, setImgSertifFile] = useState("");
   
   const [csvTypeName, setCsvTypeName] = useState("");
   const [csvTypeFile, setCsvTypeFile] = useState("");
-
-  let allFont = null, allSize = null, allPositionXY = null, allColor = null
 
   function AddMoreText() {
     console.warn(font, size, positionY, color)
@@ -25,28 +25,30 @@ function AppAutoFillPageEditing() {
         return
     }
 
-    if (allFont !== null) {
-      allFont = allFont + "|" + font
-      allSize = allSize + "|" + size
-      allPositionXY = allPositionXY + "|" + positionX + "," + positionY
-      allColor = allColor + "|" + color
-    }
-    else {
+    console.warn("all : " + allFont, allSize, allPositionXY, allColor)
+    if (allFont === null) {
+      console.log(true)
       allFont = font
       allSize = size
       allPositionXY = positionX + "," + positionY
       allColor = color
+    }
+    else {
+      allFont = allFont + "|" + font
+      allSize = allSize + "|" + size
+      allPositionXY = allPositionXY + "|" + positionX + "," + positionY
+      allColor = allColor + "|" + color
     }
 
     console.log(document.getElementsByClassName("textInput")[0])
     document.getElementsByClassName("textInput")[0].innerHTML = `
         font = ${allFont} <br>
         size = ${allSize} <br>
-        colour = ${allPositionXY} <br>
-        position  = ${allColor} <br>
+        colour = ${allColor} <br>
+        position  = ${allPositionXY} <br>
         <br>
     `
-    console.warn(allFont, allSize, allPositionXY, allColor)
+    console.warn("all : " + allFont, allSize, allPositionXY, allColor)
   }
 
   async function Submit() {
@@ -57,7 +59,7 @@ function AppAutoFillPageEditing() {
     let fileCsv = document.getElementById('csv');
     setCsvTypeName(fileCsv.files[0].name)
     setCsvTypeFile(fileCsv.value)
-    console.warn(imgSertifName, imgSertifFile, csvTypeName, csvTypeFile)
+    console.warn(fileImage, fileCsv, imgSertifName, imgSertifFile, csvTypeName, csvTypeFile)
 
     let formData = new FormData();
     formData.append('font', font);
@@ -72,6 +74,7 @@ function AppAutoFillPageEditing() {
 
     // const config = { headers: { 'content-type': 'multipart/form-data' } }
 
+    console.log(formData)
     let result = await fetch('http://localhost:8000/AutoFillPage/editing', {
       method: 'POST',
       body: formData
@@ -79,7 +82,7 @@ function AppAutoFillPageEditing() {
     .then(r => r.json())
     .then(data => {
       console.log(data)
-    })
+    }).catch(err => console.log(err))
 
     result = await result.json()
   }
@@ -115,7 +118,7 @@ function AppAutoFillPageEditing() {
               onChange={(e)=>setPositionY(e.target.value)}
             />
             <input 
-              type="text" id="textColor1" value={color} placeholder="text color"
+              type="color" id="textColor1" value={color} placeholder="text color"
               onChange={(e)=>setColor(e.target.value)}
             />
           </form>
