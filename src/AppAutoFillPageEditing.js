@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {useEffect} from 'react';
-import './App.css';
+// import './App.css';
 
 function AppAutoFillPageEditing() {
   const [font, setFont] = useState("");
@@ -72,7 +72,7 @@ function AppAutoFillPageEditing() {
 
     // const config = { headers: { 'content-type': 'multipart/form-data' } }
 
-    let result = await fetch('http://localhost:8000/AutoFillPage/editing', {
+    let result = await fetch('http://127.0.0.1:8000/sertifikat/', {
       method: 'POST',
       body: formData
     })
