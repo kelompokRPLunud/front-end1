@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {useEffect} from 'react';
-// import './App.css';
+import './App.css';
+import axios from 'axios';
 
 function AppAutoFillPageEditing() {
   const [font, setFont] = useState("");
@@ -52,36 +53,44 @@ function AppAutoFillPageEditing() {
   async function Submit() {
     let fileImage = document.getElementById('image');
     setImgSertifName(fileImage.files[0].name)
-    setImgSertifFile(fileImage.value)
+    setImgSertifFile(fileImage.files[0])
     
     let fileCsv = document.getElementById('csv');
     setCsvTypeName(fileCsv.files[0].name)
-    setCsvTypeFile(fileCsv.value)
+    setCsvTypeFile(fileCsv.files[0])
     console.warn(imgSertifName, imgSertifFile, csvTypeName, csvTypeFile)
 
     let formData = new FormData();
-    formData.append('font', font);
-    formData.append('size', size);
-    formData.append('allPositionXY', allPositionXY);
-    formData.append('color', color);
+    formData.append('font', allFont);
+    formData.append('size', allSize);
+    formData.append('position', allPositionXY);
+    formData.append('color', allColor);
 
     formData.append('imgSertifName', imgSertifName);
-    formData.append('imgSertifFile', imgSertifFile);
+    formData.append('image', imgSertifFile);
     formData.append('csvTypeName', csvTypeName);
-    formData.append('csvTypeFile', csvTypeFile);
-
+    formData.append('datacsv', csvTypeFile);
+    axios.post("api/uploadfile",formData)
     // const config = { headers: { 'content-type': 'multipart/form-data' } }
 
     let result = await fetch('http://127.0.0.1:8000/sertifikat/', {
       method: 'POST',
-      body: formData
+      body: formData,
+      redirect : 'follow',
+      referrerPolicy:'no-referrer',
     })
-    .then(r => r.json())
-    .then(data => {
-      console.log(data)
-    })
+    .then(r => r.blob().then(
+      blob => {
+        const fileURL = window.URL.createObjectURL(blob);
+        // Setting various property values
+        let alink = document.createElement('a');
+        alink.href = fileURL;
+        let namafiledownload=imgSertifName.replace(".jpg",".zip");
+        alink.download = namafiledownload;
+        alink.click();
+      }
+    ))
 
-    result = await result.json()
   }
 
   return (
@@ -90,14 +99,14 @@ function AppAutoFillPageEditing() {
           display : 'flex',
         }}>
 
+            <p className="textInput"> 
+                
+            </p>
           <form encType="multipart/form">
             <input type="file" id="image" placeholder="select image" accept="image/jpeg, image/png, image/jpg" />
             <input type="file" id="csv" placeholder="select csv" accept=".csv" />
 
             <div className="image-container"/>
-            <p className="textInput"> 
-                
-            </p>
             <input 
               type="text" id="textFont1" value={font} placeholder="text font"
               onChange={(e)=>setFont(e.target.value)}
