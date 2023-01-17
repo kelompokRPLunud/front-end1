@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Home.module.css'
 import pict1 from '../../images/pict1.svg'
 import pict2 from '../../images/pict2.svg'
-
+import { Link } from 'react-router-dom'
 const Home = () => {
   return (
     <div className={styles.Homepage}>
@@ -14,9 +14,11 @@ const Home = () => {
                     <a href="/">Whether you successfully passed an online course or want to create beautiful gift certificates for your business — we've got your back! Find numerous design ideas in AGenCertif and easily make a certificate on your own. Upload your design now and let us fill you data.</a>
                     </div>
                     <div className={styles.btncontainer}>
+                        <Link to="/sertifikat">
                         <button>
                             <span>Auto fill my certificate data</span>
                         </button>
+                        </Link>
                         <p>It free and easy to use.</p>
                     </div>
                 </div>
@@ -36,9 +38,11 @@ const Home = () => {
                     <a href="/">Don't waste time to insert a certificate from scratch. With AGenCertif, you can automaticaly input your certificate data in just few second. Upload your design now and let us fill your data.</a>
                     </div>
                     <div className={styles.btncontainer}>
+                    <Link to="/sertifikat">
                         <button>
                             <span>Auto fill my certificate data</span>
                         </button>
+                    </Link>
                         <p>Save your precious time.</p>
                     </div>
                 </div>

@@ -10,8 +10,11 @@ function AddInput(props){
     const canvas =useRef(null);
     const ctx = useRef(null);
     useEffect(()=>{
+        const colour =values.colour
         ctx.current = canvas.current.getContext('2d');
-    },[])
+        ctx.current.fillStyle="rgb("+colour+")";
+        ctx.current.fillRect(0,0,10,10);
+    },[values])
     function onChangeInputfont(e){
         const newvalues = {...values,font:e.target.value};
         props.onChange(props.id,newvalues);
@@ -49,13 +52,13 @@ function AddInput(props){
         <span id={"colour"}>
         <canvas width={10} height={10} style={{border:"1px solid black"}} ref={canvas}></canvas>
         <span id={props.id+"colour"} onClick={onClickPopButton}>{values.colour}</span>
+        </span>
+        </div>
         {PopState && 
-        <div className={style.popColour}><span onClick={onClickPopButton}>X     </span>
+        <div className={style.popColour}><span onClick={onClickPopButton}>X</span>
             <ChromePicker color={colorrgb} onChange={onChangeInputcolour}></ChromePicker>
         </div>
         }
-        </span>
-        </div>
     </form>)
 }
 export default AddInput;

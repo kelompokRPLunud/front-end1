@@ -122,7 +122,7 @@ function SertifikatAdd(props){
                     const sizeX=rect.right-rect.left;
                     const sizeY=rect.bottom-rect.top;
                     indexnya=indexnya+""
-                    return <Coordinatespoint key={indexnya+val.X+val.Y} x={(sizeX*val.X/100)} y={(sizeY*val.Y/100)}></Coordinatespoint>
+                    return <Coordinatespoint key={indexnya+val.X+val.Y} x={(sizeX*val.X/100)} y={(sizeY*val.Y/100)} size={val.size} colour={val.colour} data={indexnya}></Coordinatespoint>
                 })}
                 </div>
                 <div className={style.form}>
