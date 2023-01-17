@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Poppins:wght@700&display=swap');
+.formstyle{
+    width: 100%;
+    padding-left: 40px;
+    font-size: 16px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    color: white;
+    font-weight: bolder;
+    row-gap: 5px;
+    border: solid;
+    border-width: 0px 0px 1px 0px;
+    padding-bottom: 20px;
+    height: 120px;
+}
+.divformsytle{
+    display: flex;
+    padding-left: 20px;
+    padding-right: 80px;
+    width: 100%;
+    justify-content: left;
+    font-size: 14px;
+    font-weight: normal;
+}
+.divformsytle>label{
+    text-align: left;
+    width: 80px;
+    padding-right: 10px;
+}
+.divinput{
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    color: white;
+}
+.topdiv{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 40px;
+}
+.popColour{
+    position: relative;
+    background-color: white;
+    text-align: end;
+    top:10px;
+}
+.popColour>span{
+    color: grey;
+    padding-right: 20px;
+    cursor: pointer;
+}

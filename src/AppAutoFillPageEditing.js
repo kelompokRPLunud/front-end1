@@ -78,8 +78,11 @@ function AppAutoFillPageEditing() {
       body: formData,
       redirect : 'follow',
       referrerPolicy:'no-referrer',
+      responseType: 'arrayBuffer',
     })
-    .then(r => r.blob().then(
+    .then(r => {
+      console.log(r);
+      r.blob().then(
       blob => {
         const fileURL = window.URL.createObjectURL(blob);
         // Setting various property values
@@ -89,9 +92,9 @@ function AppAutoFillPageEditing() {
         alink.download = namafiledownload;
         alink.click();
       }
-    ))
-
-  }
+    )
+  })
+}
 
   return (
     <div className="App">
