@@ -5,21 +5,33 @@ import logo from "../../images/logo.svg";
 import Google from "../../images/Vector.svg"
 import Orsplit from "../../components/orsplit/Orsplit.jsx";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function AppLogin() {
+function AppLogin(propsperty) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  async function Login() {
+  const navigate = useNavigate();
+  async function Login(props) {
     console.warn(username, password)
-    let item = {username, password}
-    let result = await fetch ('/v1/auth/login', {
+    let item = {'nama':username, 'password':password}
+    try{
+    let result = await fetch ('http://146.190.148.131:8000/user/login/', {
         method : 'POST',  
         body : JSON.stringify(item)
     })
-
-    result = await result.json()
-    
+    result = await result.json();
+    console.log(result);
+    if (result["detail"]){
+      console.log("error")
+      return;
+    }
+    localStorage.setItem("agencertif",JSON.stringify({"token":result["token"],"nama":result["nama"]}));
+    propsperty.setUser(result);
+    navigate(`/`);
+  }
+  catch(err){
+    console.log(err)
+  }
   }
 
   return (
@@ -33,7 +45,7 @@ function AppLogin() {
           Auto Fill Your Certificate
         </div>
         <input className={style.inputfield}
-          name="name"
+          name="nama"
           type="text"
           placeholder="Username"
           onChange={e => setUsername(e.target.value)}

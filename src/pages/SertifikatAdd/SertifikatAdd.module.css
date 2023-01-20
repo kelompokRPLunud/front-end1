@@ -1,13 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins);
 .maindiv{
     background-color:#FFFFFF ;
-    padding-top: 100px;
+    height: 100%;
 }
 .container{
     background-color:#D9D9D9 ;
     position: absolute;
     left:50%;
-    transform: translateX(-50%);
+    top: 50%; 
+    transform: translate(-50%,-50%);
     width: 1350px;
     height: 800px;
     border-radius: 20px;

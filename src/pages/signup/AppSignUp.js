@@ -2,23 +2,31 @@ import React, { useState } from "react";
 import style from "./AppSignUp.module.css";
 import pict1 from "../../images/pict1.svg";
 import logo from "../../images/logo.svg";
-import Google from "../../images/Vector.svg";
 import { Link } from "react-router-dom";
-function AppSignUp() {
+import { useNavigate } from "react-router-dom";
+function AppSignUp(property) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
-  async function SignUp() {
+  async function SignUp(props) {
     console.warn(username, email, password)
-    let item = {username, email, password}
-    let result = await fetch ('/v1/auth/SignUp', {
+    let item = {'nama':username, 'email':email, 'password':password}
+    let result = await fetch ('http://146.190.148.131:8000/user/signup/', {
         method : 'POST',  
         body : JSON.stringify(item)
     })
 
-    result = await result.json()
-    
+    result = await result.json();
+    if (result["detail"]){
+      console.log("error")
+      return;
+    }
+    localStorage.setItem("agencertif",JSON.stringify({"token":result["token"],"nama":result["nama"]}));
+    property.setUser(result);
+    navigate(`/`);
+    return;
   }
 
   return (

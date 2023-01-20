@@ -1,0 +1,61 @@
+.maindiv{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    row-gap: 2em;
+    padding: 1em;
+}
+.centerdiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 2em;
+}
+.centerdiv>span{
+    font-weight: bold;
+    font-size: 36px;
+}
+.video{
+    background-color: #D9D9D9;
+    width: 28em;
+    height: 18em;
+    border-radius: 15px;
+}
+.sumbitbtn{
+    background-color:#197DC6 ;
+    height: 3em;
+    width: 16em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 8px;
+}
+.pict{
+    background-color: #D9D9D9;
+    width: 24em;
+    height: 16em;
+    border-radius: 15px;
+}
+.picsplt{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    column-gap: 2em;
+}
+.textdiv{
+    display: flex;
+    width: 24em;
+    flex-direction: column;
+    text-align: start;
+    row-gap: 1em;
+}
+.fonttitle{
+    font-size: 24px;
+    font-weight: bold;
+}

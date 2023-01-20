@@ -15,9 +15,9 @@
 .or{
     position: relative;
     top: -5px;
-    transform: translateY(-50%);
+    transform: translateY(-30%);
     background-color: white;
     width: 3em;
     text-align: center;
-    height:10px;
+    height:20px;
 }

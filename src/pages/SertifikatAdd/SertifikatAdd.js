@@ -91,7 +91,7 @@ function SertifikatAdd(props){
         formData.append('image', fileImage.files[0]);
         formData.append('datacsv', fileCsv.files[0]);
 
-        await fetch('http://127.0.0.1:8000/sertifikat/', {
+        await fetch('http://146.190.148.131:8000/sertifikat/', {
         method: 'POST',
         body: formData,
         redirect : 'follow',
