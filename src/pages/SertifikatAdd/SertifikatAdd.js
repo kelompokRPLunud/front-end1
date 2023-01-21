@@ -91,7 +91,7 @@ function SertifikatAdd(props){
         formData.append('image', fileImage.files[0]);
         formData.append('datacsv', fileCsv.files[0]);
 
-        await fetch('http://146.190.148.131:8000/sertifikat/', {
+        await fetch('http://146.190.148.131:8000/user/login/', {
         method: 'POST',
         body: formData,
         redirect : 'follow',
@@ -115,7 +115,7 @@ function SertifikatAdd(props){
         <div className={style.maindiv}>
             <div className={style.container}>
                 <div className={style.absolutecenter}>
-                <canvas ref={canvasRef} width={700} height={500} onClick={tambhakordinatcanvas}/>
+                <canvas ref={canvasRef} className={style.canvas} width={700} height={500} onClick={tambhakordinatcanvas}/>
                 {inputArr.map((val,indexnya)=>{
                     const canvas= canvasRef.current;
                     const rect = canvas.getBoundingClientRect();

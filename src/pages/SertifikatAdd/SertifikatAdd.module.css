@@ -8,9 +8,9 @@
     position: absolute;
     left:50%;
     top: 50%; 
-    transform: translate(-50%,-50%);
-    width: 1350px;
-    height: 800px;
+    transform: translate(-50%,-40%);
+    width: 100vh;
+    height: 60vh;
     border-radius: 20px;
 }
 .absolutecenter{
@@ -24,14 +24,15 @@
     border-radius: 0px 20px 20px 0px;
     background-color:#707070 ;
     height: 100%;
-    width:410px;
+    width:30vh;
     right:0px;
 }
 .formtop{
-    padding-top: 40px;
-    padding-bottom: 40px;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    padding-right: 2vh;
+    padding-left: 2vh;
+    height: 10%;
     display: flex;
     align-items: flex-start;
     column-gap: 10px;
@@ -52,7 +53,7 @@
 }
 .pilihlabel{
     width: 100%;
-    height: 80%;
+    height: 40vh;
     font-family: 'Poppins';
     color: #FFFFFF;
     font-weight: bold;
@@ -69,7 +70,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     width: 100%;
-    height: 550px;
+    height: 35vh;
     display: flex;
     overflow: scroll;
     flex-direction: column;
@@ -87,7 +88,7 @@
     background-color:#197DC6 ;
     border-radius: 8px;
     width: 90%;
-    height: 50px;
+    height: 4vh;
     font-family: 'Poppins';
     color: #FFFFFF;
     font-weight: bold;
@@ -96,12 +97,12 @@
 }
 .formbottom{
     width: 100%;
-    height: 150px;
+    height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
-    row-gap: 10px;
+    row-gap: 1px;
 }
 .formfile{
     width: 100%;
@@ -112,9 +113,10 @@
 }
 .divfile{
     width: 100%;
+    height: 3vh;
     display: flex;
     padding-left: 40px;
-    padding-right: 35%;
+    padding-right: 20%;
     font-family: 'Poppins';
     font-size:14px ;
     color: #FFFFFF;
@@ -122,7 +124,7 @@
     justify-content: space-between;
 }
 .divbtnupld{
-    width: 100px;
+    width: 4vw;
 }
 .divbtnupld::-webkit-file-upload-button{
     visibility: hidden;
@@ -131,6 +133,7 @@
     content: "Pilih file";
     display: inline-block;
     border: solid;
+    width: 4vh;
     border-width: 2px;
     border-radius: 2px;
     padding: 5px 8px;
@@ -138,8 +141,13 @@
     user-select: none;
     cursor: pointer;
     font-weight: 700;
-    font-size: 10pt;
+    font-size: 1vh;
 }
 .divbtnupld:active::before {
     color: black;
   }
+
+.canvas{
+    width: 55vh;
+    height: 40vh;
+}
