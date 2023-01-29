@@ -91,7 +91,7 @@ function SertifikatAdd(props){
         formData.append('image', fileImage.files[0]);
         formData.append('datacsv', fileCsv.files[0]);
 
-        await fetch('http://146.190.148.131:8000/user/login/', {
+        await fetch('http://146.190.148.131:8000/sertifikat/', {
         method: 'POST',
         body: formData,
         redirect : 'follow',
@@ -122,7 +122,7 @@ function SertifikatAdd(props){
                     const sizeX=rect.right-rect.left;
                     const sizeY=rect.bottom-rect.top;
                     indexnya=indexnya+""
-                    return <Coordinatespoint key={indexnya+val.X+val.Y} x={(sizeX*val.X/100)} y={(sizeY*val.Y/100)} size={val.size} colour={val.colour} data={indexnya}></Coordinatespoint>
+                    return <Coordinatespoint key={indexnya+val.X+val.Y} x={(sizeX*val.X/100)} y={(sizeY*val.Y/100)} size={parseInt(val.size)*100/sizeY} colour={val.colour} data={indexnya}></Coordinatespoint>
                 })}
                 </div>
                 <div className={style.form}>
